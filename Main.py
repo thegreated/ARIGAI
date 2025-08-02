@@ -1,8 +1,10 @@
 from content_generator.ArticleController import ArticleController
 from video_generator.VideoBuilder import *
 from dotenv import load_dotenv
-from video_generator.helper.GeminiTTS import  TextToAudio
+#from video_generator.helper.GeminiTTS import  GeminiTTS
 import  os
+
+from video_generator.helper.TextToAudio import TextToAudio
 
 link = "https://test-website.com"
 load_dotenv()

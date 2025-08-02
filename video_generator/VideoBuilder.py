@@ -64,7 +64,7 @@ class SubTitleController:
         # TextClip style generator
         generator = SubtitleText().make_generator(video_with_audio)
         # Build subtitles clip
-        subtitles = SubtitlesClip(subtitles_data, make_textclip=generator).set_position(('center', 1300))
+        subtitles = SubtitlesClip(subtitles_data, make_textclip=generator).set_position(('center', 1200))
 
         # Combine Everything and Export ===
 
