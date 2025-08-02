@@ -1,0 +1,4 @@
+.env
+resources
+video_generator/helper/test.py
+video_generator/helper/test2.py
