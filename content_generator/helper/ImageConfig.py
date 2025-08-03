@@ -4,32 +4,13 @@ import glob
 import shutil
 from datetime import datetime
 import re
+import requests
 
 class ImageConfig:
 
     def __init__(self,folder_path):
         self.folder_path = folder_path + "initial_image_data/"
         self.folder_path_parent = folder_path
-
-    def check_images_exist(self):
-        print("Getting the saved images for the article.")
-        png_files = glob.glob(os.path.join(self.folder_path, "*.png"))
-        jpg_files = glob.glob(os.path.join(self.folder_path, "*.jpg"))
-        webp_files = glob.glob(os.path.join(self.folder_path, "*.webp"))
-
-        image_files = png_files + jpg_files + webp_files
-
-        if image_files:
-            date_str = datetime.now().strftime("%Y_%m_%d_%H_%M")
-            destination_path = self.folder_path_parent + date_str + "/"
-            os.makedirs(destination_path)
-            return self.move_images(self.folder_path, destination_path)
-
-
-
-        else:
-            print("❌ No .png or .jpg files found in the folder. initial_image_data please check")
-            return []
 
 
     def move_images(self, source_folder, destination_folder):
@@ -51,3 +32,28 @@ class ImageConfig:
 
 
         return full_paths
+
+    @staticmethod
+    def download_images(url) :
+        folder_path = os.getenv("IMG_PATH_INITIAL_IMG")
+        # Make sure the folder exists
+        os.makedirs(folder_path, exist_ok=True)
+        # Extract filename from URL
+        filename = os.path.basename(url)
+        # Full path to save the image
+        file_path = os.path.join(folder_path, filename)
+
+        # Download and save the image
+        response = requests.get(url)
+        if response.status_code == 200:
+            with open(file_path, 'wb') as f:
+                f.write(response.content)
+
+            print(f"Image saved to: {file_path}")
+            return file_path
+        else:
+            print("Failed to download image:", response.status_code)
+            return ""
+
+
+

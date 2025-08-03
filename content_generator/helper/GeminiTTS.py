@@ -1,4 +1,4 @@
-"""
+
 from google import genai
 from google.genai import types
 import wave
@@ -41,7 +41,6 @@ class GeminiTTS:
           wf.setframerate(rate)
           wf.writeframes(pcm)
 
-          """
 
 
 
