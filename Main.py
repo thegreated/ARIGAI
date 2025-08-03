@@ -1,5 +1,7 @@
 from content_generator.ArticleController import ArticleController
-from video_generator.VideoBuilder import *
+from content_generator.helper.GeminiTTS import GeminiTTS
+from video_generator.VideoBuilder import VideoBuilder
+from video_generator.VideoBuilder_old_backup import *
 from dotenv import load_dotenv
 #from video_generator.helper.GeminiTTS import  GeminiTTS
 import  os
@@ -9,21 +11,20 @@ from video_generator.helper.TextToAudio import TextToAudio
 link = "https://test-website.com"
 load_dotenv()
 
-# generate and get the article
+# generate and get the article and images
 output_data = ArticleController(link).generate_article()
 # covert to audio
-output_data['narrator']= TextToAudio().generate(output_data['article'])
+
+output_data['narrator']=  GeminiTTS().generate(output_data['article'])
 
 
 #finalizing the data combining it together
-sub = SubTitleController(
-    output_data['narrator'],
+sub = VideoBuilder.generate(
     output_data['images'],
-   "resources/background_music.mp3",
-        os.getenv("OUTPUT_PATH")+"final_reels.mp4"
-           )
-
-sub.process_raw_audio()
+    "resources/background_music.mp3",
+    output_data['narrator'],
+     os.getenv("OUTPUT_PATH")+"final_reels.mp4"
+     )
 
 
 
