@@ -1,9 +1,10 @@
+"""
 from google import genai
 from google.genai import types
 import wave
 import os
 
-class TextToAudio:
+class GeminiTTS:
 
 
     def generate(self,article):
@@ -39,6 +40,8 @@ class TextToAudio:
           wf.setsampwidth(sample_width)
           wf.setframerate(rate)
           wf.writeframes(pcm)
+
+          """
 
 
 
