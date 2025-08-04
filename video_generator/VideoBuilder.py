@@ -53,7 +53,7 @@ class VideoBuilder:
             json.dump(self.wordlevel_info, f, indent=4)
 
     def split_to_lines(self, max_chars=80, max_duration=3.0, max_gap=1.5):
-        print("Splitting into line-level subtitles...")
+        print("------ Splitting into line-level subtitles...")
         data = self.wordlevel_info
         subtitles = []
         line = []
@@ -89,7 +89,7 @@ class VideoBuilder:
         self.linelevel_subtitles = subtitles
 
     def create_caption(self, line_json):
-        print("Creating Centered Captions...")
+        print("------ Creating Centered Captions...")
         full_duration = line_json['end'] - line_json['start']
         w, h = self.frame_size
 
@@ -141,7 +141,8 @@ class VideoBuilder:
 
         # Calculate total block height
         total_height = len(lines) * (word_height + line_spacing) - line_spacing
-        y_start = (h - total_height) // 2
+        y_offset = -500
+        y_start = (h - total_height - y_offset) // 2
 
         # Second pass: position everything centered
         word_clips = []
@@ -191,7 +192,7 @@ class VideoBuilder:
         return word_clips
 
     def generate_video(self):
-        print("Rendering video...")
+        print(" ------Rendering video...")
         all_clips = []
         for line in self.linelevel_subtitles:
             all_clips.extend(self.create_caption(line))
