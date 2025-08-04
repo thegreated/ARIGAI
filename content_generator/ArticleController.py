@@ -1,6 +1,6 @@
 
 from content_generator.OpenAI import OpenAI
-from content_generator.WebScrapping import WebScrapping
+from content_generator.helper.AgenQLScrap import WebScrapping
 from google_image_search.ImageSearch import ImageSearch
 
 class ArticleController:

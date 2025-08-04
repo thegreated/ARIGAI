@@ -8,9 +8,14 @@ class ImageSearch:
 
 
   def search(self,search_txt):
+
       print("Searching the characters on internet to get the images..")
+
+      search_txt = search_txt[:3]
       image_results = []
       full_paths = []
+
+
       for search in search_txt:
           params = {
               "api_key": os.getenv("GOOGLE_API_KEY"),
@@ -52,4 +57,7 @@ class ImageSearch:
      #data = json.dumps(image_results, indent=2)
       print(full_paths)
       return full_paths
+
+
+
 
