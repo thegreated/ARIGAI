@@ -8,10 +8,11 @@ import  os
 
 from video_generator.helper.TextToAudio import TextToAudio
 
-link = "https://test-website.com"
+link = "https://www.msn.com/en-ph/news/other/dela-rosa-turns-to-holy-spirit-anew-ahead-of-duterte-impeachment-vote/ar-AA1JRD6e?ocid=msedgdhp&cvid=636128a455eb460dec61a24108cba248&ei=17"
 load_dotenv()
 
 # generate and get the article and images
+
 output_data = ArticleController(link).generate_article()
 # covert to audio
 
