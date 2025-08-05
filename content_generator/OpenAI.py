@@ -19,8 +19,7 @@ class OpenAI:
                                "Make sure to sort it by the when the article mention on the character"
                                " for example if character 1 mention first it should be 1st on array "
                                "The only data on the array should be the name of the character only "
-                                "Among this character or topic pic 3 that most relevant to the article"
-                                "Don't mension any company or the original creator of the article"
+                                "Don't mention any company or the original creator of the article"
                                 "No other data just the name of the character" 
                                 "The character is only human or animals"
                                "this is the article: ")

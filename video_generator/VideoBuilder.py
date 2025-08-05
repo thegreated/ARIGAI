@@ -15,6 +15,9 @@ from moviepy.editor import (
 )
 import os
 
+from video_generator.helper.FileHandler import FileHandler
+
+
 class VideoBuilder:
 
     change_settings({"IMAGEMAGICK_BINARY": r"C:\Program Files\ImageMagick-7.1.2-Q16-HDRI\magick.exe"})
@@ -217,7 +220,7 @@ class VideoBuilder:
         bg_clip = concatenate_videoclips(bg_clips, method="compose")
 
         # Load and loop background music
-        bg_music = volumex(AudioFileClip(self.bg_music), 0.1)
+        bg_music = volumex(AudioFileClip(self.bg_music), 0.03)
         bg_music = audio_loop(bg_music, duration=speech_duration)
         final_audio = CompositeAudioClip([speech, bg_music])
 
@@ -246,6 +249,7 @@ class VideoBuilder:
         generator.transcribe()
         generator.split_to_lines()
         generator.generate_bg()
+        FileHandler.reset()
 
 
 
