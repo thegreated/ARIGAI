@@ -20,7 +20,7 @@ class ImageSearch:
           params = {
               "api_key": os.getenv("GOOGLE_API_KEY"),
               "engine": "google",
-              "q": search,
+              "q": "recent picture of "+search,
               "google_domain": "google.com",
               "tbm": "isch",
               "nfpr": "1",
@@ -39,7 +39,7 @@ class ImageSearch:
                   for image in results.get("images_results", []):
                       if image["original"] not in image_results:
                           image_results.append(image["original"])
-                          image_path_data = ImageConfig.download_images(image["original"])
+                          image_path_data = ImageConfig.download_images(image["original"],search)
                           if image_path_data != "" :
                               full_paths.append(image_path_data)
 
