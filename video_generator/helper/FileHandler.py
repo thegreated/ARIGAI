@@ -2,7 +2,6 @@
 
 import os
 import random
-
 class FileHandler:
 
     @staticmethod
@@ -32,4 +31,3 @@ class FileHandler:
             return  selected_file_path
         else:
             print("No files found in the folder.")
-
