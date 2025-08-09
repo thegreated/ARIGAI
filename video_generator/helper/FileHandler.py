@@ -2,7 +2,6 @@
 
 import os
 import random
-
 class FileHandler:
 
     @staticmethod
@@ -13,8 +12,11 @@ class FileHandler:
         for root, dirs, files in os.walk(folder_path):
             for file in files:
                 file_path = os.path.join(root, file)
-                os.remove(file_path)
-                print(f"Deleted: {file_path}")
+                try:
+                    os.remove(file_path)
+                    print(f"Deleted: {file_path}")
+                except Exception as e:
+                    print(f"Could not delete {file_path}: {e}")
 
     @staticmethod
     def background_randomizer():
@@ -32,4 +34,3 @@ class FileHandler:
             return  selected_file_path
         else:
             print("No files found in the folder.")
-
