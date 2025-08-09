@@ -30,7 +30,7 @@ class ImageConfig:
         return full_paths
 
     @staticmethod
-    def download_images(url):
+    def download_images(url,search):
         folder_path = os.getenv("IMG_PATH_INITIAL_IMG")
         os.makedirs(folder_path, exist_ok=True)
 
@@ -50,7 +50,7 @@ class ImageConfig:
                 return ""
 
             # Sanitize filename
-            filename = ImageConfig.sanitize_filename(url)
+            filename = search+"-"+ImageConfig.sanitize_filename(url)
             file_path = os.path.join(folder_path, filename)
 
             # Write image to file
