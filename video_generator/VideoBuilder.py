@@ -229,7 +229,7 @@ class VideoBuilder:
         bg_clip = concatenate_videoclips(bg_clips, method="compose")
 
         # Add and loop background music
-        bg_music = volumex(AudioFileClip(self.bg_music), 0.07)
+        bg_music = volumex(AudioFileClip(self.bg_music), 0.03)
         bg_music = audio_loop(bg_music, duration=speech_duration)
         final_audio = CompositeAudioClip([speech, bg_music])
 

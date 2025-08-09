@@ -15,7 +15,6 @@ load_dotenv()
 while True :
 
     infinite_handler = GoogleSheet().generate()
-    print(infinite_handler)
     if infinite_handler :
 
         FileHandler.reset()
